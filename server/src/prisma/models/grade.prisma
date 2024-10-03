@@ -1,0 +1,7 @@
+model Grade {
+  id       Int      @id @default(autoincrement())
+  name     String
+  pupils   Pupil[]   // One-to-many relationship with Pupil
+  subjects Subject[] @relation("GradeSubjects")  // Many-to-many relationship with Subject
+}
+

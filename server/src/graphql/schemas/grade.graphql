@@ -1,0 +1,34 @@
+# Define the Grade type
+type Grade {
+    id: ID!
+    name: String!
+    # This is the simple model, can be extended based on requirements
+}
+
+extend type Grade {
+  pupils: [Pupil!]!
+  subjects: [Subject!]!
+}
+
+# Queries to get Grades
+type Query {
+  # Fetch a Grade by their ID
+  getGrade(id: ID!): Grade
+
+  # Fetch all Grades
+  getGrades: [Grade!]!
+}
+
+# Mutations to create or update Grades
+type Mutation {
+  # Create a new Grade
+  createGrade(name: String!): Grade!
+
+  # Update an existing Grade's information
+  updateGrade(id: ID!, name: String!, subjectIds: [ID!]): Grade!
+
+  # Delete a Grade by their ID
+  deleteGrade(id: ID!): Boolean!
+}
+
+

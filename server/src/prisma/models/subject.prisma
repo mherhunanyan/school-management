@@ -1,0 +1,8 @@
+model Subject {
+  id    Int     @id @default(autoincrement())
+  name  String
+  teacherId Int
+  teacher   Teacher @relation(fields: [teacherId], references: [id])
+  grades   Grade[] @relation("GradeSubjects")  // Many-to-many relationship with Grade
+}
+

@@ -1,0 +1,33 @@
+# Define the Teacher type
+type Teacher {
+    id: ID!
+    name: String!
+    # This is the simple model, can be extended based on requirements
+}
+
+extend type Teacher {
+  subjects: [Subject!]!
+}
+
+# Queries to get teachers
+type Query {
+  # Fetch a teacher by their ID
+  getTeacher(id: ID!): Teacher
+
+  # Fetch all teachers
+  getTeachers: [Teacher!]!
+}
+
+# Mutations to create or update teachers
+type Mutation {
+  # Create a new teacher
+  createTeacher(name: String!): Teacher!
+
+  # Update an existing teacher's information
+  updateTeacher(id: ID!, name: String!): Teacher!
+
+  # Delete a teacher by their ID
+  deleteTeacher(id: ID!): Boolean!
+}
+
+

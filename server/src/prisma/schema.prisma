@@ -1,0 +1,43 @@
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Grade {
+  id       Int      @id @default(autoincrement())
+  name     String
+  pupils   Pupil[]   // One-to-many relationship with Pupil
+  subjects Subject[] @relation("GradeSubjects")  // Many-to-many relationship with Subject
+}
+
+model Pupil {
+  id       Int     @id @default(autoincrement())
+  name     String
+  gradeId  Int
+  grade    Grade   @relation(fields: [gradeId], references: [id]) // Relationship to Grade
+}
+
+model Subject {
+  id    Int     @id @default(autoincrement())
+  name  String
+  teacherId Int
+  teacher   Teacher @relation(fields: [teacherId], references: [id])
+  grades   Grade[] @relation("GradeSubjects")  // Many-to-many relationship with Grade
+}
+
+model Teacher {
+  id    Int     @id @default(autoincrement())
+  name  String
+  subjects Subject[]
+}
+
+model User {
+  id           Int      @id @default(autoincrement())
+  email        String   @unique
+  passwordHash String   // Stores the hashed password using bcrypt
+  role         String   // Can be 'admin' or 'user'
+}

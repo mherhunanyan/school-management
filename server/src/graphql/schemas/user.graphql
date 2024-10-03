@@ -1,0 +1,23 @@
+# Define the User type
+type User {
+  id: ID!
+  email: String!
+  role: String!
+}
+
+type LoginResponse {
+  user: User!
+  token: String  # JWT token returned after login
+}
+
+# Queries related to User and Admin functionality
+type Query {
+  # Fetch current user (admin or regular user)
+  me: User
+}
+
+# Mutations for login functionality
+type Mutation {
+  # Login mutation for generating a token
+  login(email: String!, password: String!): LoginResponse!
+}

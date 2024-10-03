@@ -1,0 +1,34 @@
+# Define the Subject type
+type Subject {
+    id: ID!
+    name: String!
+    teacherId: ID!
+    # This is the simple model, can be extended based on requirements
+}
+
+extend type Subject {
+  grades: [Grade!]!
+}
+
+# Queries to get subjects
+type Query {
+  # Fetch a subject by their ID
+  getSubject(id: ID!): Subject
+
+  # Fetch all subjects
+  getSubjects: [Subject!]!
+}
+
+# Mutations to create or update Subjects
+type Mutation {
+  # Create a new subject
+  createSubject(name: String!): Subject!
+
+  # Update an existing subject's information
+  updateSubject(id: ID!, name: String!, teacherId: ID!): Subject!
+
+  # Delete a subject by their ID
+  deleteSubject(id: ID!): Boolean!
+}
+
+

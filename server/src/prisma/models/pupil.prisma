@@ -1,0 +1,7 @@
+model Pupil {
+  id       Int     @id @default(autoincrement())
+  name     String
+  gradeId  Int
+  grade    Grade   @relation(fields: [gradeId], references: [id]) // Relationship to Grade
+}
+
