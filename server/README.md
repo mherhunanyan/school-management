@@ -88,3 +88,6 @@ curl --location 'http://localhost:4000/graphql' \
     "query": "query { me { id, email, role } }"
 }'
 ````
+
+### DB Structure
+![DB Structure](https://github.com/user-attachments/assets/60347408-d623-4a18-87d2-5c14d7ba80ef)
