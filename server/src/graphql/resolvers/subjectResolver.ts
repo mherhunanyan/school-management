@@ -29,7 +29,7 @@ const subjectResolver = {
             return prisma.subject.create({
                 data: {
                     name: args.name,
-                    teacherId: args.teacherId,
+                    teacherId: +args.teacherId,
                 },
             });
         },
