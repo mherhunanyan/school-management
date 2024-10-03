@@ -14,8 +14,8 @@ export const Header: FC = () => {
                 <Box sx={{ flexGrow: 1 }}>
                     <Typography variant="h6">School Management</Typography>
                 </Box>
-                {user && user.name && (
-                    <Typography variant="h6">{user.name}</Typography>
+                {user && user.email && (
+                    <Typography variant="h6">{user.email}</Typography>
                 )}
             </Toolbar>
         </AppBar>
